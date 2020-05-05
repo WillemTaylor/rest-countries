@@ -1,10 +1,110 @@
 @import './variables.scss';
+@import url('https://use.fontawesome.com/releases/v5.13.0/css/all.css');
 
 html,
 body {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Nunito Sans', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  font-weight: 600;
+  background: hsl(0, 0%, 98%);
+  padding: 0;
+  margin: 0;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background: white;
+  padding: 20px 0;
+  box-shadow: 0px -2px 11px hsl(0, 0%, 52%);
+
+  h3 {
+    margin-left: 15px;
+  }
+
+  h4 {
+    margin-left: 10px;
+    font-weight: 300;
+  }
+
+  div {
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+    margin-right: 15px;
+    cursor: pointer;
+  }
+}
+
+.search-filters-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
+  .search-container {
+    text-align: left;
+    margin: 40px 0 0 20px;
+    width: 500px;
+
+    input {
+      background: hsl(0, 0%, 100%);
+      border-radius: 5px;
+      box-shadow: 0px 1px 21px -8px #858585;
+      border: none;
+      height: 55px;
+      min-width: 280px;
+      width: 95%;
+      text-indent: 70px;
+      padding-right: 20px;
+
+      &::placeholder {
+        font-family: 'Nunito Sans', sans-serif;
+        text-indent: 70px;
+        color: hsl(0, 0%, 52%);
+      }
+    }
+
+    &::before {
+      content: '\f002';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      font-size: 18px;
+      position: absolute;
+      margin-top: 16px;
+      left: 50px;
+    }
+  }
+
+  .filter-container {
+    margin: 40px 20px;
+    text-align: left;
+
+    select {
+      font-family: 'Nunito Sans', sans-serif;
+      height: 55px;
+      width: 200px;
+      padding-left: 20px;
+      border-radius: 5px;
+      background: white;
+      box-shadow: 0px 1px 21px -8px #858585;
+      border: none;
+      appearance: none;
+    }
+    &::after {
+      content: '\f078';
+      font-family: 'Font Awesome 5 Free';
+      font-weight: 900;
+      position: absolute;
+      margin: 20px 0 0 -35px;
+    }
+
+    option {
+      border-radius: 5px;
+    }
+  }
 }
