@@ -1,30 +1,42 @@
 <template>
   <div>
     <Header />
-    <Search />
-    <Countries :data="data" />
+    <Search @selected="onSelectDropdown" @searched="onSearchType" />
+    <Countries :data="data" :dropdown="dropdownValue" :search="searchValue" />
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-import Header from './header';
-import Search from './search';
-import Countries from './countries';
+import axios from "axios";
+import Header from "./header";
+import Search from "./search";
+import Countries from "./countries";
 
 export default {
   components: {
     Header,
     Search,
-    Countries,
+    Countries
   },
   data() {
     return {
       data: [],
+      dropdownValue: "",
+      searchValue: ""
     };
   },
   mounted() {
-    axios.get('https://restcountries.eu/rest/v2/all').then((response) => (this.data = response.data));
+    axios
+      .get("https://restcountries.eu/rest/v2/all")
+      .then(response => (this.data = response.data));
   },
+  methods: {
+    onSelectDropdown(value) {
+      this.dropdownValue = value;
+    },
+    onSearchType(value) {
+      this.searchValue = value;
+    }
+  }
 };
 </script>
