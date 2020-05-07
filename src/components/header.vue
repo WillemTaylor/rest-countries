@@ -19,9 +19,14 @@ export default {
       darkMode: false,
     };
   },
+  created() {
+    localStorage.getItem('darkMode') === 'true' ? (this.darkMode = true) : (this.darkMode = false);
+  },
   methods: {
     handleDarkMode() {
       this.darkMode = !this.darkMode;
+      this.$emit('clicked', this.darkMode);
+      localStorage.setItem('darkMode', this.darkMode);
     },
   },
 };

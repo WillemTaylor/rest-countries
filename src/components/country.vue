@@ -1,6 +1,6 @@
 <template>
-  <div id="country">
-    <Header />
+  <div id="country" :class="mode ? 'dark' : 'light'">
+    <Header @clicked="darkModeToggle" />
     <button class="btn-back" @click="$router.replace('/')">Back</button>
     <div class="country-container" v-for="tile in country" :key="tile.country">
       <div>
@@ -38,56 +38,53 @@
             </p>
             <p>
               <b>Currencies:</b>
-              {{ tile.currencies.map(x => x.name).toString() }}
+              {{ tile.currencies.map((x) => x.name).toString() }}
             </p>
             <p>
               <b>Languages:</b>
-              {{ tile.languages.map(x => x.name).join(", ") }}
+              {{ tile.languages.map((x) => x.name).join(', ') }}
             </p>
           </div>
         </div>
         <p>
           <b>Border Countries:</b>
         </p>
-        <a
-          class="btn-border"
-          v-for="border in handleTileBorders"
-          :key="border.name"
-          @click="onClick($event)"
-        >{{ border }}</a>
+        <a class="btn-border" v-for="border in handleTileBorders" :key="border.name" @click="onClick($event)">{{
+          border
+        }}</a>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import Header from "./header";
-import axios from "axios";
+import Header from './header';
+import axios from 'axios';
 
 export default {
   components: {
-    Header
+    Header,
   },
   data() {
     return {
-      country: "",
-      data: []
+      country: '',
+      data: [],
+      mode: '',
     };
   },
+  created() {
+    localStorage.getItem('darkMode') === 'true' ? (this.mode = true) : (this.mode = false);
+  },
   mounted() {
-    let eps = sessionStorage.getItem("country");
-    axios
-      .get(`https://restcountries.eu/rest/v2/name/${eps}`)
-      .then(response => (this.country = response.data));
+    let eps = sessionStorage.getItem('country');
+    axios.get(`https://restcountries.eu/rest/v2/name/${eps}`).then((response) => (this.country = response.data));
 
-    axios
-      .get("https://restcountries.eu/rest/v2/all")
-      .then(response => (this.data = response.data));
+    axios.get('https://restcountries.eu/rest/v2/all').then((response) => (this.data = response.data));
   },
   computed: {
     handleTileBorders() {
-      let borders = this.country.map(x => x.borders).flat();
-      let countries = this.data.filter(x => x.borders);
+      let borders = this.country.map((x) => x.borders).flat();
+      let countries = this.data.filter((x) => x.borders);
       let res = [];
 
       for (let i = 0; i < borders.length; i++) {
@@ -98,19 +95,22 @@ export default {
         }
       }
       return res;
-    }
+    },
   },
   filters: {
     formatPopulation(value) {
-      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    }
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    },
   },
   methods: {
     onClick(event) {
-      sessionStorage.setItem("country", event.target.innerHTML);
+      sessionStorage.setItem('country', event.target.innerHTML);
       this.$router.push(`/${event.target.innerHTML.toLowerCase()}`);
       location.reload();
-    }
-  }
+    },
+    darkModeToggle(value) {
+      this.mode = value;
+    },
+  },
 };
 </script>

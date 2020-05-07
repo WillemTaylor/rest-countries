@@ -1,29 +1,22 @@
-# rest-countries
+# REST Countries API challenge
 
-## Project setup
-```
-npm install
-```
+This development challenge was taken from frontendmentor here: https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca, and the free Country API was taken from here: https://restcountries.eu/
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+### The Challenge
 
-### Compiles and minifies for production
-```
-npm run build
-```
+The task was to integrate with the REST Countries API to pull country data and display it like in the designs of the challenge, including displaying basic information on each country.
 
-### Run your tests
-```
-npm run test
-```
+### What it does
 
-### Lints and fixes files
-```
-npm run lint
-```
+You should be able to:
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+- See all countries from the API on the homepage
+- Search for a country using the `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode
+
+# Hosted site
+
+Project was written using Vue.js framework, including icons taken from https://fontawesome.com/ and country API pulled using Axios. Project was deployed to Netlify here:
