@@ -84,7 +84,6 @@ export default {
   },
   mounted() {
     let path = window.location.pathname;
-
     axios
       .get(`https://restcountries.eu/rest/v2/name${path}`)
       .then(response => (this.country = response.data));
