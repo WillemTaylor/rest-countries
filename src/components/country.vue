@@ -1,7 +1,7 @@
 <template>
   <div id="country" :class="mode ? 'dark' : 'light'">
     <Header @clicked="darkModeToggle" />
-    <button class="btn-back" @click="onClick($event)">Back</button>
+    <button class="btn-back" @click="$router.go(-1)">Back</button>
     <div class="country-container" v-for="tile in country" :key="tile.country">
       <div>
         <img :src="`${tile.flag}`" />
@@ -77,12 +77,6 @@ export default {
       mode: ""
     };
   },
-  watch: {
-    $route() {
-      this.$router.push(`/${window.location.pathname}`);
-      location.reload();
-    }
-  },
   created() {
     localStorage.getItem("darkMode") === "true"
       ? (this.mode = true)
@@ -122,12 +116,7 @@ export default {
   },
   methods: {
     onClick(event) {
-      if (event.target.innerHTML === "Back") {
-        this.$router.go(-1);
-        this.$router.push(`/${window.location.pathname}`);
-      } else {
-        this.$router.push(`/${event.target.innerHTML.toLowerCase()}`);
-      }
+      this.$router.push(`/${event.target.innerHTML.toLowerCase()}`);
     },
     darkModeToggle(value) {
       this.mode = value;
