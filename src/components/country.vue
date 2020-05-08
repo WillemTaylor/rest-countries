@@ -77,6 +77,13 @@ export default {
       mode: ""
     };
   },
+  updated() {
+    let path = window.location.pathname.substr(1);
+
+    axios
+      .get(`https://restcountries.eu/rest/v2/name/${path}`)
+      .then(response => (this.country = response.data));
+  },
   created() {
     localStorage.getItem("darkMode") === "true"
       ? (this.mode = true)
@@ -84,7 +91,6 @@ export default {
   },
   mounted() {
     let path = window.location.pathname.substr(1);
-
     axios
       .get(`https://restcountries.eu/rest/v2/name/${path}`)
       .then(response => (this.country = response.data));
@@ -115,7 +121,7 @@ export default {
     }
   },
   methods: {
-    onClick(event) {
+    onClick() {
       this.$router.push(`/${event.target.innerHTML.toLowerCase()}`);
     },
     darkModeToggle(value) {
