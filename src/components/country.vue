@@ -77,6 +77,12 @@ export default {
       mode: ""
     };
   },
+  watch: {
+    $route() {
+      this.$router.push(`/${window.location.pathname}`);
+      location.reload();
+    }
+  },
   created() {
     localStorage.getItem("darkMode") === "true"
       ? (this.mode = true)
@@ -120,7 +126,6 @@ export default {
         this.$router.go(-1);
         this.$router.push(`/${window.location.pathname}`);
       } else {
-        location.reload();
         this.$router.push(`/${event.target.innerHTML.toLowerCase()}`);
       }
     },
