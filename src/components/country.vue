@@ -77,18 +77,18 @@ export default {
       mode: ""
     };
   },
-  beforeCreate() {
-    let path = window.location.pathname.substr(1);
-    axios
-      .get(`https://restcountries.eu/rest/v2/name/${path}`)
-      .then(response => (this.country = response.data));
-  },
   created() {
+    window.scrollTo(0, 0);
     localStorage.getItem("darkMode") === "true"
       ? (this.mode = true)
       : (this.mode = false);
   },
   mounted() {
+    let path = window.location.pathname.substr(1);
+    axios
+      .get(`https://restcountries.eu/rest/v2/name/${path}`)
+      .then(response => (this.country = response.data));
+
     axios
       .get("https://restcountries.eu/rest/v2/all")
       .then(response => (this.data = response.data));
