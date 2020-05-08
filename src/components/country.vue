@@ -77,6 +77,9 @@ export default {
       mode: ""
     };
   },
+  beforeCreate() {
+    console.log("test");
+  },
   created() {
     window.scrollTo(0, 0);
     localStorage.getItem("darkMode") === "true"
