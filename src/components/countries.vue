@@ -51,8 +51,7 @@ export default {
   },
   methods: {
     onClick(event) {
-      sessionStorage.setItem("country", event.target.innerHTML);
-      this.$router.push(`/${event.target.innerHTML.toLowerCase()}`);
+      this.$router.push(`/${event.target.innerHTML}`);
     }
   }
 };
