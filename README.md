@@ -19,4 +19,4 @@ You should be able to:
 
 # Hosted site
 
-Project was written using Vue.js framework, including icons taken from https://fontawesome.com/ and country API pulled using Axios. Project was deployed to Netlify here:
+Project was written using Vue.js framework, including icons taken from https://fontawesome.com/ and country API pulled using Axios. Project was deployed to Netlify here: https://restful-countries.netlify.app/
