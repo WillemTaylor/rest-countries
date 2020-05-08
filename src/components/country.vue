@@ -83,9 +83,10 @@ export default {
       : (this.mode = false);
   },
   mounted() {
-    let path = window.location.pathname;
+    let path = window.location.pathname.substr(1);
+
     axios
-      .get(`https://restcountries.eu/rest/v2/name${path}`)
+      .get(`https://restcountries.eu/rest/v2/name/${path}`)
       .then(response => (this.country = response.data));
 
     axios
@@ -119,8 +120,8 @@ export default {
         this.$router.go(-1);
         this.$router.push(`/${window.location.pathname}`);
       } else {
-        this.$router.push(`/${event.target.innerHTML}`);
         location.reload();
+        this.$router.push(`/${event.target.innerHTML.toLowerCase()}`);
       }
     },
     darkModeToggle(value) {

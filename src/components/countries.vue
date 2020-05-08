@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     onClick(event) {
-      this.$router.push(`/${event.target.innerHTML}`);
+      this.$router.push(`/${event.target.innerHTML.toLowerCase()}`);
     }
   }
 };
