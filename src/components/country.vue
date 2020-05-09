@@ -84,7 +84,7 @@ export default {
       : (this.mode = false);
   },
   mounted() {
-    let path = window.location.pathname.substr(1);
+    let path = window.location.pathname.substr(11);
     axios
       .get(`https://restcountries.eu/rest/v2/name/${path}`)
       .then(response => (this.country = response.data));
@@ -116,7 +116,7 @@ export default {
   },
   methods: {
     onClick(countryName) {
-      this.$router.push({ path: `/${countryName}` });
+      this.$router.push({ path: `/countries/${countryName}` });
     },
     darkModeToggle(value) {
       this.mode = value;
