@@ -51,7 +51,7 @@ export default {
   },
   methods: {
     onClick(countryName) {
-      this.$router.push({ path: `/countries/${countryName}` });
+      this.$router.push({ path: `/${countryName}` });
     }
   }
 };
