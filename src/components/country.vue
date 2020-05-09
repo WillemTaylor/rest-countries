@@ -54,7 +54,7 @@
             class="btn-border"
             v-for="border in handleTileBorders"
             :key="border.name"
-            @click="onClick($event)"
+            @click="onClick(border)"
           >{{ border }}</a>
         </div>
       </div>
@@ -115,8 +115,8 @@ export default {
     }
   },
   methods: {
-    onClick() {
-      this.$router.push(`/${event.target.innerHTML.toLowerCase()}`);
+    onClick(countryName) {
+      this.$router.push({ path: `/${countryName}` });
     },
     darkModeToggle(value) {
       this.mode = value;

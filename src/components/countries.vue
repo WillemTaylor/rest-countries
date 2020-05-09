@@ -2,7 +2,7 @@
   <div class="tile-container">
     <div class="tile" v-for="tile in handleShowTiles" :key="tile.data">
       <img :src="`${tile.flag}`" />
-      <h2 @click="onClick($event)">{{ tile.name }}</h2>
+      <h2 @click="onClick(tile.name)">{{ tile.name }}</h2>
       <p>
         <b>Population:</b>
         {{ tile.population | formatPopulation }}
@@ -50,8 +50,8 @@ export default {
     }
   },
   methods: {
-    onClick(event) {
-      this.$router.push(`/${event.target.innerHTML.toLowerCase()}`);
+    onClick(countryName) {
+      this.$router.push({ path: `/${countryName}` });
     }
   }
 };
