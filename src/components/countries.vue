@@ -51,7 +51,6 @@ export default {
   },
   methods: {
     onClick(countryName) {
-      localStorage.setItem("country", countryName);
       this.$router.push({ path: `/${countryName}` });
     }
   }

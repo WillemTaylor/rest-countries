@@ -82,13 +82,13 @@ export default {
     localStorage.getItem("darkMode") === "true"
       ? (this.mode = true)
       : (this.mode = false);
-
-    let path = localStorage.getItem("country");
+  },
+  mounted() {
+    let path = window.location.hash.substring(2);
     axios
       .get(`https://restcountries.eu/rest/v2/name/${path}`)
       .then(response => (this.country = response.data));
-  },
-  mounted() {
+
     axios
       .get("https://restcountries.eu/rest/v2/all")
       .then(response => (this.data = response.data));
@@ -116,7 +116,6 @@ export default {
   },
   methods: {
     onClick(countryName) {
-      localStorage.setItem("country", countryName);
       this.$router.push({ path: `/${countryName}` });
     },
     darkModeToggle(value) {
