@@ -84,9 +84,9 @@ export default {
       : (this.mode = false);
   },
   mounted() {
-    let path = window.location.pathname;
+    let path = localStorage.getItem("countryName");
     axios
-      .get(`https://restcountries.eu/rest/v2/name${path}`)
+      .get(`https://restcountries.eu/rest/v2/name/${path}`)
       .then(response => (this.country = response.data));
 
     axios
@@ -116,6 +116,7 @@ export default {
   },
   methods: {
     onClick(countryName) {
+      localStorage.setItem("countryName", countryName);
       this.$router.push({ path: `/${countryName}` });
     },
     darkModeToggle(value) {
