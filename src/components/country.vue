@@ -82,13 +82,13 @@ export default {
     localStorage.getItem("darkMode") === "true"
       ? (this.mode = true)
       : (this.mode = false);
-  },
-  mounted() {
+
     let path = localStorage.getItem("country");
     axios
       .get(`https://restcountries.eu/rest/v2/name/${path}`)
       .then(response => (this.country = response.data));
-
+  },
+  mounted() {
     axios
       .get("https://restcountries.eu/rest/v2/all")
       .then(response => (this.data = response.data));
