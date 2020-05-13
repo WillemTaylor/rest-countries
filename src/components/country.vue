@@ -84,9 +84,9 @@ export default {
       : (this.mode = false);
   },
   mounted() {
-    let path = window.location.pathname.substr(1);
+    let path = window.location.pathname;
     axios
-      .get(`https://restcountries.eu/rest/v2/name/${path}`)
+      .get(`https://restcountries.eu/rest/v2/name${path}`)
       .then(response => (this.country = response.data));
 
     axios
