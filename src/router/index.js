@@ -12,16 +12,16 @@ const routes = [
     component: Home,
   },
   {
-    path: '/countries/:country',
+    path: '/:country',
     name: 'Country',
     component: Country,
   },
 ];
 
 const router = new VueRouter({
-  mode: 'history',
+  routes: routes,
+  mode: 'hash',
   base: process.env.BASE_URL,
-  routes,
 });
 
 export default router;

@@ -52,7 +52,7 @@ export default {
   methods: {
     onClick(countryName) {
       localStorage.setItem("country", countryName);
-      this.$router.push({ path: `/countries/${countryName.toLowerCase()}` });
+      this.$router.push({ path: `/${countryName}` });
     }
   }
 };
