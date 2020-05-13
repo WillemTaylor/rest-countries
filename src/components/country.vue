@@ -1,7 +1,7 @@
 <template>
   <div id="country" :class="mode ? 'dark' : 'light'">
     <Header @clicked="darkModeToggle" />
-    <button class="btn-back" @click="$router.go(-1)">Back</button>
+    <button class="btn-back" @click="$router.push('/')">Back</button>
     <div class="country-container" v-for="tile in country" :key="tile.country">
       <div>
         <img :src="`${tile.flag}`" />
@@ -82,13 +82,13 @@ export default {
     localStorage.getItem("darkMode") === "true"
       ? (this.mode = true)
       : (this.mode = false);
-  },
-  mounted() {
-    let path = localStorage.getItem("countryName");
+
+    let path = localStorage.getItem("country");
     axios
       .get(`https://restcountries.eu/rest/v2/name/${path}`)
       .then(response => (this.country = response.data));
-
+  },
+  mounted() {
     axios
       .get("https://restcountries.eu/rest/v2/all")
       .then(response => (this.data = response.data));
@@ -116,7 +116,7 @@ export default {
   },
   methods: {
     onClick(countryName) {
-      localStorage.setItem("countryName", countryName);
+      localStorage.setItem("country", countryName);
       this.$router.push({ path: `/${countryName}` });
     },
     darkModeToggle(value) {
